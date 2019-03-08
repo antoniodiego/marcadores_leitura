@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.antoniodiego.servidor_marcadores.itens;
+package br.antoniodiego.servidor_marcadores.controladores;
 
-import javax.persistence.MappedSuperclass;
+import br.antoniodiego.servidor_marcadores.itens.Marcador;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Antônoio Diego <antoniodiegoluz at gmail.com>
  */
-@MappedSuperclass
-public abstract class Marcador {
+public interface ReposMarcador extends CrudRepository<Marcador, Long>{
     
 }
