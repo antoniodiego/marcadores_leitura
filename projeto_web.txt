@@ -1,0 +1,20 @@
+22/01/19 20:06
+---
+Livro.
+Titulo
+marcadores(Marcador)
+---
+Marcador
+LocalDateTime momento;
+String dscricao;
+URL link p
+
+--
+LivroFisico
+
+--
+LivroVirtual.
+endereco pag inic
+---
+MarcadorFisico
+int numPag;
