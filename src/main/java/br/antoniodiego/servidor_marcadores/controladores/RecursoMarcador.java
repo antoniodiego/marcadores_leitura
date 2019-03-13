@@ -22,12 +22,12 @@ public class RecursoMarcador {
     @Autowired
     private ReposMarcador repos;
 
-    @GetMapping
+    @GetMapping("marcador")
     public Iterable<Marcador> lista() {
         return repos.findAll();
     }
     
-     @PostMapping
+     @PostMapping("marcador")
     public Marcador cadastra(@RequestBody Marcador livroCadastar) {
         return repos.save(livroCadastar);
     }

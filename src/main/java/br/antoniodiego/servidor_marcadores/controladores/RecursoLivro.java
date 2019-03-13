@@ -22,12 +22,12 @@ public class RecursoLivro {
     @Autowired
     private ReposLivros reposi;
 
-    @GetMapping
+    @GetMapping("livro")
     public Iterable<Livro> lista() {
         return reposi.findAll();
     }
     
-     @PostMapping
+     @PostMapping("livro")
     public Livro cadastra(@RequestBody Livro livroCadastar) {
         return reposi.save(livroCadastar);
     }
