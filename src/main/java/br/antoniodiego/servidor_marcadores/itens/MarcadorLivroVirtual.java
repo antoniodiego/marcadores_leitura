@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -20,13 +21,18 @@ public class MarcadorLivroVirtual extends Marcador implements Serializable {
     @Id
     private Long id;
     /**
-     * 
+     *
      */
     private LocalDateTime dataHoraPausa;
     /**
+     *
+     */
+    private String descric;
+    /**
      * 
      */
-    private String desc;
+    @ManyToOne
+    private Livro livro;
 
     public Long getId() {
         return id;
@@ -45,12 +51,11 @@ public class MarcadorLivroVirtual extends Marcador implements Serializable {
     }
 
     public String getDesc() {
-        return desc;
+        return descric;
     }
 
     public void setDesc(String desc) {
-        this.desc = desc;
+        this.descric = desc;
     }
 
-    
 }
