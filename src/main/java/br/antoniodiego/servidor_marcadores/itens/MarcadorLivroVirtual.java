@@ -29,10 +29,13 @@ public class MarcadorLivroVirtual extends Marcador implements Serializable {
      */
     private String descric;
     /**
-     * 
+     *
      */
     @ManyToOne
     private Livro livro;
+
+    public MarcadorLivroVirtual() {
+    }
 
     public Long getId() {
         return id;
@@ -50,12 +53,21 @@ public class MarcadorLivroVirtual extends Marcador implements Serializable {
         this.dataHoraPausa = dataHoraPausa;
     }
 
-    public String getDesc() {
+    public String getDescric() {
         return descric;
     }
 
-    public void setDesc(String desc) {
-        this.descric = desc;
+    public void setDescric(String descric) {
+        this.descric = descric;
     }
 
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
+    }
+
+    
 }

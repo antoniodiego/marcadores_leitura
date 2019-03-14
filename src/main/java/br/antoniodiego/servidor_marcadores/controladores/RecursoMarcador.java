@@ -6,6 +6,7 @@
 package br.antoniodiego.servidor_marcadores.controladores;
 
 import br.antoniodiego.servidor_marcadores.itens.Marcador;
+import br.antoniodiego.servidor_marcadores.itens.MarcadorLivroVirtual;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,12 +24,12 @@ public class RecursoMarcador {
     private ReposMarcador repos;
 
     @GetMapping("marcador")
-    public Iterable<Marcador> lista() {
+    public Iterable<MarcadorLivroVirtual> lista() {
         return repos.findAll();
     }
     
      @PostMapping("marcador")
-    public Marcador cadastra(@RequestBody Marcador livroCadastar) {
+    public Marcador cadastra(@RequestBody MarcadorLivroVirtual livroCadastar) {
         return repos.save(livroCadastar);
     }
 }

@@ -5,13 +5,13 @@
  */
 package br.antoniodiego.servidor_marcadores.controladores;
 
-import br.antoniodiego.servidor_marcadores.itens.Marcador;
+import br.antoniodiego.servidor_marcadores.itens.MarcadorLivroVirtual;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Antônoio Diego <antoniodiegoluz at gmail.com>
  */
-public interface ReposMarcador extends CrudRepository<Marcador, Long>{
+public interface ReposMarcador extends CrudRepository<MarcadorLivroVirtual, Long>{
     
 }
