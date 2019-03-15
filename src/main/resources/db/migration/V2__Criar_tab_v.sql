@@ -7,6 +7,4 @@
  * Author:  Antônoio Diego <antoniodiegoluz at gmail.com>
  * Created: 13/03/2019
  */
-CREATE TABLE LIVROS_MARCADORES (
- LIVRO_ID BIGINT,
-);
+ALTER TABLE MARCADOR ADD COLUMN LIVRO_ID BIGINT;

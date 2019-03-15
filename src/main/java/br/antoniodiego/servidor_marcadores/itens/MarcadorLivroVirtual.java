@@ -7,18 +7,25 @@ package br.antoniodiego.servidor_marcadores.itens;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
  * @author Antônoio Diego <antoniodiegoluz at gmail.com>
  */
 @Entity
-public class MarcadorLivroVirtual extends Marcador implements Serializable {
+@Table(name = "MARCADOR")
+public class MarcadorLivroVirtual implements Serializable {
 
     @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
     /**
      *
@@ -27,7 +34,8 @@ public class MarcadorLivroVirtual extends Marcador implements Serializable {
     /**
      *
      */
-    private String descric;
+    @Column(name="DESCRICAO_POSIC")
+    private String descricao_posic;
     /**
      *
      */
@@ -54,11 +62,11 @@ public class MarcadorLivroVirtual extends Marcador implements Serializable {
     }
 
     public String getDescric() {
-        return descric;
+        return descricao_posic;
     }
 
     public void setDescric(String descric) {
-        this.descric = descric;
+        this.descricao_posic = descric;
     }
 
     public Livro getLivro() {

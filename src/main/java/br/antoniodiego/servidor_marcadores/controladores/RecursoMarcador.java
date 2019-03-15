@@ -29,7 +29,7 @@ public class RecursoMarcador {
     }
     
      @PostMapping("marcador")
-    public Marcador cadastra(@RequestBody MarcadorLivroVirtual livroCadastar) {
+    public MarcadorLivroVirtual cadastra(@RequestBody MarcadorLivroVirtual livroCadastar) {
         return repos.save(livroCadastar);
     }
 }

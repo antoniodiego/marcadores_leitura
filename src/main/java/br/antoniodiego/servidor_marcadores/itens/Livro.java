@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  * Representa um livro. Pode representar um livro de algum saite. Talvez ele
@@ -28,17 +29,17 @@ import javax.persistence.Table;
 public class Livro implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
     @Column(name = "URL_RAIZ")
     private String urlRaiz;
-    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "livro")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "livro")
     private List<MarcadorLivroVirtual> marcadores;
 
     public Livro() {
         marcadores = new ArrayList<>();
     }
-
 
     public Long getId() {
         return id;

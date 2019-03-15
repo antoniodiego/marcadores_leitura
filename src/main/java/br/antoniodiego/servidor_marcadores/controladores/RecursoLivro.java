@@ -6,6 +6,9 @@
 package br.antoniodiego.servidor_marcadores.controladores;
 
 import br.antoniodiego.servidor_marcadores.itens.Livro;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,13 +25,23 @@ public class RecursoLivro {
     @Autowired
     private ReposLivros reposi;
 
+    /**
+     *
+     */
+    private final Logger logReL;
+
+    public RecursoLivro() {
+        logReL = LogManager.getLogger(RecursoLivro.class);
+    }
+
     @GetMapping("livro")
     public Iterable<Livro> lista() {
         return reposi.findAll();
     }
-    
-     @PostMapping("livro")
+
+    @PostMapping("livro")
     public Livro cadastra(@RequestBody Livro livroCadastar) {
+        logReL.debug("L u: " + livroCadastar.getUrlRaiz());
         return reposi.save(livroCadastar);
     }
 }
