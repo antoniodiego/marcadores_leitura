@@ -35,7 +35,9 @@ public class RecursoLivro {
         logReL = LogManager.getLogger(RecursoLivro.class);
     }
 
-    @CrossOrigin("http://localhost:4200")
+    @CrossOrigin(origins = {"http://localhost:4200","http://10.0.0.19:4200",
+        "http://10.0.0.17:4200"})
+  
     @GetMapping("livro")
     public Iterable<Livro> lista() {
         return reposi.findAll();
