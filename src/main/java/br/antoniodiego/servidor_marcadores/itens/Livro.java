@@ -5,17 +5,19 @@
  */
 package br.antoniodiego.servidor_marcadores.itens;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.Access;
+
 
 /**
  * Representa um livro. Pode representar um livro de algum saite. Talvez ele
@@ -28,14 +30,15 @@ import org.hibernate.annotations.GenericGenerator;
 public class Livro implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "URL_RAIZ")
+    @Column(name = "url_raiz")
     private String urlRaiz;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "livro")
-    private List<MarcadorLivroVirtual> marcadores;
+    private List<MarcadorFisico> marcadores;
+    private String nome;
 
+    
     public Livro() {
         marcadores = new ArrayList<>();
     }
@@ -56,12 +59,22 @@ public class Livro implements Serializable {
         this.urlRaiz = urlRaiz;
     }
 
-    public List<MarcadorLivroVirtual> getMarcadores() {
+    public List<MarcadorFisico> getMarcadores() {
         return marcadores;
     }
 
-    public void setMarcadores(List<MarcadorLivroVirtual> marcadores) {
+    public void setMarcadores(List<MarcadorFisico> marcadores) {
         this.marcadores = marcadores;
     }
 
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    
 }
