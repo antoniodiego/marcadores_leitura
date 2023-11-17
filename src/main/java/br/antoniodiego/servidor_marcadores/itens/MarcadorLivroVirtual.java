@@ -20,7 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
  * @author Antônoio Diego <antoniodiegoluz at gmail.com>
  */
 @Entity
-@Table(name = "MARCADOR")
+@Table(name = "MARCADORES")
 public class MarcadorLivroVirtual implements Serializable {
 
     @Id

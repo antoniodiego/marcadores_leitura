@@ -5,7 +5,7 @@
  */
 package br.antoniodiego.servidor_marcadores.controladores;
 
-import br.antoniodiego.servidor_marcadores.itens.Marcador;
+import br.antoniodiego.servidor_marcadores.repository.ReposMarcador;
 import br.antoniodiego.servidor_marcadores.itens.MarcadorLivroVirtual;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
