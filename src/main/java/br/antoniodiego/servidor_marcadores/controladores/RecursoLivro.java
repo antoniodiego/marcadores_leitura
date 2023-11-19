@@ -5,6 +5,7 @@
  */
 package br.antoniodiego.servidor_marcadores.controladores;
 
+import br.antoniodiego.servidor_marcadores.repository.ReposLivros;
 import br.antoniodiego.servidor_marcadores.itens.Livro;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Antônoio Diego <antoniodiegoluz at gmail.com>
  */
 @RestController
+@RequestMapping(path = "/livros")
 public class RecursoLivro {
 
     @Autowired
@@ -35,17 +38,46 @@ public class RecursoLivro {
         logReL = LogManager.getLogger(RecursoLivro.class);
     }
 
-    @CrossOrigin(origins = {"http://localhost:4200","http://10.0.0.19:4200",
+    @CrossOrigin(origins = {"http://localhost:4200", "http://10.0.0.19:4200",
         "http://10.0.0.17:4200"})
-  
-    @GetMapping("livro")
-    public Iterable<Livro> lista() {
-        return reposi.findAll();
+
+    @GetMapping("/")
+    public Iterable<LivroDTO> lista() {
+        return reposi.findAll().stream().map((livro) -> {
+            LivroDTO ld = new LivroDTO();
+            ld.nome = livro.getNome();
+            ld.link = livro.getUrlRaiz();
+            return ld;
+        }).toList();
     }
 
-    @PostMapping("livro")
+    @PostMapping("/")
     public Livro cadastra(@RequestBody Livro livroCadastar) {
         logReL.debug("L u: " + livroCadastar.getUrlRaiz());
         return reposi.save(livroCadastar);
+    }
+
+    public class LivroDTO {
+
+        String nome;
+        String link;
+
+        public String getNome() {
+            return nome;
+        }
+
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
+
+        public String getLink() {
+            return link;
+        }
+
+        public void setLink(String link) {
+            this.link = link;
+        }
+        
+        
     }
 }
